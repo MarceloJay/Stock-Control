@@ -5,15 +5,7 @@ Este documento fornece um guia passo a passo para baixar e executar um projeto L
 # ApiRESTfull
 
 
-
-
-**Tabela de conteúdo**
-
-[TOCM]
-
-[TOC]
-
-##Passo 1: Baixando o projeto
+## Passo 1: Baixando o projeto
                 
 1. Certifique-se de ter o Git instalado em seu ambiente de desenvolvimento. Caso não tenha, siga as instruções de instalação do Git para o seu sistema operacional.
 2. Abra o terminal ou prompt de comando e navegue até o diretório onde deseja baixar o projeto.
@@ -21,7 +13,7 @@ Este documento fornece um guia passo a passo para baixar e executar um projeto L
 `$ git clone https://github.com/MarceloJay/ApiRESTfull.git`
                 
 
-##Passo 2: Configurando o ambiente
+## Passo 2: Configurando o ambiente
                 
 1. Certifique-se de ter o PHP e o Composer instalados em seu ambiente de desenvolvimento. Caso não tenha, siga as instruções de instalação do PHP e do Composer.
 2. Abra o terminal ou prompt de comando e navegue até o diretório do projeto Laravel que foi baixado.
@@ -29,9 +21,12 @@ Este documento fornece um guia passo a passo para baixar e executar um projeto L
 3. Execute o seguinte comando para instalar as dependências do projeto Laravel:
 `$ composer install`
                 
+## Passo 3: Configuração do banco de dados
 
+Abra o arquivo .env na raiz do projeto e configure as informações de conexão com o banco de dados MySQL (como nome do banco de dados, usuário e senha).
+Execute o comando `$ php artisan migrate` para criar as tabelas necessárias no banco de dados.
 
-##Passo 3: Executando o projeto
+## Passo 4: Executando o projeto
                 
 1. No terminal ou prompt de comando, execute o seguinte comando para iniciar o servidor de desenvolvimento do Laravel:
 `$ php artisan serve`
@@ -40,5 +35,6 @@ Este documento fornece um guia passo a passo para baixar e executar um projeto L
 
 **Pronto! Agora você pode explorar e utilizar o projeto Laravel localmente.**
 > Certifique-se de estudar a documentação oficial do Laravel para obter mais informações detalhadas sobre o desenvolvimento e execução de projetos Laravel.
+
 
 
