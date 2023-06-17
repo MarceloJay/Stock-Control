@@ -1,66 +1,40 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>README - Executando Projeto Laravel a partir do Git</title>
+</head>
+<body>
+    <h1>README - Executando Projeto Laravel a partir do Git</h1>
+    <p>Este documento fornece um guia passo a passo para baixar e executar um projeto Laravel a partir do Git. Ele abrange desde o download do projeto até a configuração do ambiente e a execução do projeto no Laravel.</p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+    <h2>Passo 1: Baixando o projeto</h2>
+    <ol>
+        <li>Certifique-se de ter o Git instalado em seu ambiente de desenvolvimento. Caso não tenha, siga as instruções de instalação do Git para o seu sistema operacional.</li>
+        <li>Abra o terminal ou prompt de comando e navegue até o diretório onde deseja baixar o projeto.</li>
+        <li>Execute o seguinte comando para clonar o projeto a partir do repositório Git:</li>
+    </ol>
+    <pre><code>git clone https://github.com/MarceloJay/ApiRESTfull.git</code></pre>
+    <p>Aguarde até que o Git termine de baixar o projeto para o diretório selecionado.</p>
 
-## About Laravel
+    <h2>Passo 2: Configurando o ambiente</h2>
+    <ol>
+        <li>Certifique-se de ter o PHP e o Composer instalados em seu ambiente de desenvolvimento. Caso não tenha, siga as instruções de instalação do PHP e do Composer.</li>
+        <li>Abra o terminal ou prompt de comando e navegue até o diretório do projeto Laravel que foi baixado.</li>
+        <pre><code>cd ApiRESTfull</code></pre>
+        <li>Execute o seguinte comando para instalar as dependências do projeto Laravel:</li>
+    </ol>
+    <pre><code>composer install</code></pre>
+    <p>Gere a chave de criptografia do Laravel executando o seguinte comando:</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    <h2>Passo 3: Executando o projeto</h2>
+    <ol>
+        <li>No terminal ou prompt de comando, execute o seguinte comando para iniciar o servidor de desenvolvimento do Laravel:</li>
+    </ol>
+    <pre><code>php artisan serve</code></pre>
+    <p>O projeto Laravel será executado no servidor de desenvolvimento e você poderá acessá-lo em seu navegador através da URL fornecida pelo comando anterior.</p>
+    <p>Pronto! Agora você pode explorar e utilizar o projeto Laravel localmente.</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    <p>Certifique-se de estudar a documentação oficial do Laravel para obter mais informações detalhadas sobre o desenvolvimento e execução de projetos Laravel.</p>
+</body>
+</html>
