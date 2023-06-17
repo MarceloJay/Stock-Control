@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/swagger.json', function () {
-    $swagger = \Swagger\scan(app_path('Http\Controllers'));
-    return response()->json($swagger, 200);
-});

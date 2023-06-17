@@ -25,7 +25,6 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']); 
 });
 
-// Route::middleware('auth:api')->get('/users', [UserController::class, 'index']);
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/users/{userId}', [UserController::class, 'show']);
     Route::get('/users', [UserController::class, 'index']);
