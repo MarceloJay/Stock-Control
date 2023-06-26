@@ -1,20 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View ;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\ResponseTrait;
 use App\Models\User;
 use Validator;
 
 class AuthController extends Controller
 {
+    protected $redirectTo = '/';
+
     /**
      * Create a new AuthController instance.
      *
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'logout']]);
     }
     /**
      * Get a JWT via given credentials.
@@ -68,7 +78,12 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->createNewToken($token);
+        if (isset($request->_token)) {
+            $url = route('home') . '?token=' . $token;
+            return redirect($url);
+        } else {
+            return $this->createNewToken($token);
+        }
     }
 
     /**
@@ -156,7 +171,6 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
         return response()->json(['message' => 'User successfully signed out']);
     }
 

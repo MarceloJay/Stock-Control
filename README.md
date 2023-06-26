@@ -36,5 +36,7 @@ Execute o comando `$ php artisan migrate` para criar as tabelas necessárias no 
 **Pronto! Agora você pode explorar e utilizar o projeto Laravel localmente.**
 > Certifique-se de estudar a documentação oficial do Laravel para obter mais informações detalhadas sobre o desenvolvimento e execução de projetos Laravel.
 
+![](public/swagger/Screenshot 2023-06-17 at 13.40.43.png "")
+
 
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
+Route::group(['namespace' => 'Auth'], function () {
+    // Authentication Routes...
+    // Route::get('welcome_first', 'LoginController@welcome_first')->name('welcome_first');
+    // Route::get('welcome_first', [LoginController::class, 'welcome_first'])->name('welcome_first');
+
+    // Route::get('/login', [LoginController::class, 'login'])->name('login');
+    // Route::post('login', 'LoginController@login');
+    // Route::get('logout', 'LoginController@logout')->name('logout');
 });
+
+Route::get('/', function () {
+    return view('home');
+})->middleware('auth')->name('home');
+
+

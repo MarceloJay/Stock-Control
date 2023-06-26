@@ -170,6 +170,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
     ])->toArray(),
 
     /*
