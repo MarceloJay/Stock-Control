@@ -30,6 +30,9 @@ Route::group(['namespace' => 'Auth'], function () {
     // Route::get('logout', 'LoginController@logout')->name('logout');
 });
 
+// Route::get('session', 'SessionController@session')->name('session');
+
+
 Route::get('/', function () {
     return view('home');
 })->middleware('auth')->name('home');
