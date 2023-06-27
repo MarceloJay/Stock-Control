@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View ;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Validator; 
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\ResponseTrait;
+use Notifiable;
 use App\Models\User;
-use Validator;
 
 class AuthController extends Controller
 {
@@ -79,6 +83,12 @@ class AuthController extends Controller
         }
 
         if (isset($request->_token)) {
+            $tokenId = $this->createNewToken($token);
+            $response = response()->json($tokenId); 
+            $data = $response->getData(); 
+            $userId = $data->original->user->id;
+            session('userId', $userId);
+            var_dump(session(key:'userId'));
             $url = route('home') . '?token=' . $token;
             return redirect($url);
         } else {
