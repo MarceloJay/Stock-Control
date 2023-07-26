@@ -61,16 +61,12 @@
                                 </td>
                                 <td style="text-align:right;">{{ $produto->quantidadeTotal }}</td>
                                 <td class="justify-content flex-end text-right">
-                                <a href="" class="btn btn-info">Ver</a>
-                                <button type="button" class="btn btn-primary edit-button" data-toggle="modal" data-target="#editModal" data-produto-id="{{ $produto->id }}" data-produto-nome="{{ $produto->nome }}" data-produto-unidades="{{ $produto->unidades }}">Editar</button>
-
-                                <button type="button" class="btn btn-success save-button" style="display: none;">Salvar</button>
-                                <button type="button" class="btn btn-secondary cancel-button" style="display: none;">Cancelar</button>
+                                <button type="button" class="btn btn-success edit-button" data-toggle="modal" data-target="#editModal" data-produto-id="{{ $produto->id }}" data-produto-nome="{{ $produto->nome }}" data-produto-embalagem="{{ $produto->embalagem }}"  data-produto-countembalagem="{{ $produto->quantidade_embalagem }}" data-produto-unidades="{{ $produto->unidades }}">Adicionar</button>
                                 <form action="" method="POST" style="display: inline" class="delete-form">
                                     @csrf
                                     @method('DELETE')
                                     <!-- <button type="submit" class="btn btn-danger delete-button" onclick="return confirm('Tem certeza?')">Excluir</button> -->
-                                    <button type="submit" class="btn btn-danger delete-button d-inline-block mb-2 mb-md-0" style="width: 80px;" onclick="return confirm('Tem certeza?')">Excluir</button>
+                                    <button type="submit" class="btn btn-danger delete-button d-inline-block mb-2 mb-md-0" onclick="return confirm('Tem certeza?')">Excluir</button>
 
 
                                 </form>
@@ -94,7 +90,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Editar Produto</h5>
+        <h5 class="modal-title" id="editModalLabel">Adicionar Produto</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -104,6 +100,14 @@
           <div class="form-group">
             <label for="nome">Nome do Produto:</label>
             <input type="text" id="produtoNomeInput" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="Embalagem">Embalagem:</label>
+            <input type="text" id="produtoEmbalagem" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="quantidade_embalagem">Quantidade por embalagem:</label>
+            <input type="text" id="produtoCountEmbalagem" class="form-control" readonly>
           </div>
           <div class="form-group">
             <label for="unidades">Unidades:</label>
@@ -150,7 +154,7 @@
     .table td {
         text-align: center;
         border: 1px solid #ccc;
-        padding: 8px;
+        padding: 3;
     }
 
     .pagination-container {
@@ -206,21 +210,33 @@
         margin-left: 400px;
         text-align: center;
     }
-     
+    .btn-success {
+        /* height: 30px; */
+        font-size: 14px;
+        text-align: center;
+        margin-right: 10;
+    } 
+    .btn-danger {
+        /* height: 30px; */
+        font-size: 14px;
+        text-align: center;
+        margin-right: 10;
+    }
 </style>
 <script>
     const editButton = document.querySelector(".edit-button");
     var editModal = document.querySelector('.fade');
     editButton.addEventListener("click", function () {
-        
         // Obtém os dados do produto do botão clicado
         const produtoId = this.dataset.produtoId;
         const produtoNome = this.dataset.produtoNome;
-        const produtoUnidades = this.dataset.produtoUnidades;
+        const produtoEmbalagem = this.dataset.produtoEmbalagem;
+        const produtocountEmbalagem = this.dataset.produtoCountembalagem;
 
         // Preenche o formulário do modal com os dados do produto
         document.getElementById('produtoNomeInput').value = produtoNome;
-        document.getElementById('produtoUnidadesInput').value = produtoUnidades;
+        document.getElementById('produtoEmbalagem').value = produtoEmbalagem;
+        document.getElementById('produtoCountEmbalagem').value = produtocountEmbalagem;
 
         // Abre o modal
         $("#editModal").modal({ show: true });

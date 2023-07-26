@@ -48,15 +48,15 @@
    @endif
 </ul>
 <style>
-    .page-item {
-        display: inline-flex;
-        vertical-align: middle;
-    }
-    .page-link {
-        vertical-align: middle;
-    }
-    /* .custom-active {
-        background-color: #007bff;
-        border-color: #007bff;
-    } */
+   .page-item {
+      display: inline-flex;
+      vertical-align: middle;
+   }
+   .page-link {
+      vertical-align: middle;
+   }
+   /* .custom-active {
+      background-color: #007bff;
+      border-color: #007bff;
+   } */
 </style>
