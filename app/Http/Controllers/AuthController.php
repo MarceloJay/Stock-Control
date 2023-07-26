@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\Api\SessionController;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View ;
@@ -78,22 +79,11 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        if (!$token = auth()->attempt($validator->validated())) {
+        if (!$token = auth('web')->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        if (isset($request->_token)) {
-            $tokenId = $this->createNewToken($token);
-            $response = response()->json($tokenId); 
-            $data = $response->getData(); 
-            $userId = $data->original->user->id;
-            session('userId', $userId);
-            var_dump(session(key:'userId'));
-            $url = route('home') . '?token=' . $token;
-            return redirect($url);
-        } else {
-            return $this->createNewToken($token);
-        }
+   
+        return $this->respondWithToken($token);
     }
 
     /**
@@ -248,6 +238,22 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
+        ]);
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
             'user' => auth()->user()
         ]);
     }

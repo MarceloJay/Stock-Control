@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('headers.header')
+@extends('layouts.header')
 
 @section('content')
 <html lang="en">
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h2 class="card-title">Entrar</h2>
               <!-- <form> -->
-              <form class='form-horizontal form-label-left' action="/api/auth/login" method="POST">
+              <form class='form-horizontal form-label-left' action="/login" method="POST">
                 {{ csrf_field() }}  
                 <div class="form-group">
                     <label for="username">Email</label>

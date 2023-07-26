@@ -10,7 +10,8 @@ class SessionController extends Controller
     
     function session($key = null, $default = null)
     {
-        echo "<h1>Teste session</h1>";
+        // echo "<h1>Teste session</h1>";
+        // die();
         // Se nenhum argumento for passado, retorna toda a sessão
         if ($key === null) {
             return Session::all();

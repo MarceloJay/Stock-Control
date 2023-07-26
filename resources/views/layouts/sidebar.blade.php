@@ -10,7 +10,7 @@
         removeTokenFromURL();
     }
 </script>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">    
 
 <head>
     <title>StockControl</title>
@@ -46,7 +46,7 @@
         .sidebar {
             top: 0%;
             position: absolute;
-            width: 220px;
+            width: 240px;
             padding: 20px;
             transform: translateX(0);
             transition: transform .3s;
@@ -71,6 +71,7 @@
             display: block;
             cursor: pointer;
             top: 20px;
+            /* margin-left: -200px; */
         }
 
         .button svg {
@@ -129,10 +130,11 @@
     </style>
 </head>
 <body>
+    @yield('content')
     <div class="wrapper">
     <div class="sidebar isOpen">
         <img src="{{ asset('images/mystocklogo.png') }}" alt="Logo" class="logo">
-        <a class="button" style="margin: 0px 0px 0px 215px;  position: absolute;">
+        <a class="button" style="margin: 0px 15px 0px 230px;  position: absolute;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <line x1="0" y1="20" x2="100" y2="20" />
                 <line x1="0" y1="50" x2="100" y2="50" />
@@ -141,9 +143,9 @@
             </a>
             
         <ul class="nav">
-            <li><a href="#">Página Inicial</a></li>
-            <li><a href="{{ route('produtos.show') }}">Pedidos</a></li>
-            <li><a href="#">Produtos</a></li>
+            <li><a href="{{ route('dashboard.index') }}">Página Inicial</a></li>
+            <li><a href="{{ route('produtos.create') }}">Add Pedidos</a></li>
+            <li><a href="{{ route('produtos.index') }}">Produtos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Relatórios</a></li>
             <li><a href="#">Settings</a></li>
@@ -181,11 +183,28 @@
             });
         });
 
+        // const addProduto = document.getElementById('add');
+        // addProduto.addEventListener('click', () => {
+        //     fetch('show', {
+        //         method: 'POST',
+        //         headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken }
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //         // Exiba a mensagem da resposta JSON (opcional)
+        //         console.log(data.message);
+                
+        //         // Redirecione para a página de login
+        //         window.location.href = '/login';
+        //         })
+        //         .catch(error => {
+        //         console.error('Erro:', error);
+        //     });
+        // });
+
     </script>
 </body>
 </html>
-
-
 
 
 

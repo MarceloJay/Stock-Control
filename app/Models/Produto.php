@@ -54,18 +54,12 @@ class Produto extends Model
 
     public function getQuantidadeTotalAttribute()
     {
-        $unidadesPorEmbalagem = [
-            'fardo' => [4, 5, 6, 9, 8, 10, 12, 20, 24],
-            'caixa' => [4, 5, 6, 9, 8, 10, 12, 20, 24],
-        ];
-
-        if (array_key_exists($this->embalagem, $unidadesPorEmbalagem)) {
-            $opcoesEmbalagem = $unidadesPorEmbalagem[$this->embalagem];
-            $unidades = $opcoesEmbalagem[array_rand($opcoesEmbalagem)];
-            return $this->quantidade_embalagem * $unidades;
+        if ($this->embalagem === 'fardo' || $this->embalagem === 'caixa') {
+            return $this->quantidade_embalagem * $this->unidades;
         } else {
             return $this->quantidade_embalagem;
         }
     }
+
 }
 
