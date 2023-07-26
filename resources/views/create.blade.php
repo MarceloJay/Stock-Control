@@ -1,6 +1,19 @@
 <!DOCTYPE html>
-@extends('headers.sidebar')
+@extends('layouts.sidebar')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <!-- Error message -->
+  @if (session('errorMessage'))
+        <div class="alert alert-danger text-center">
+            {{ session('errorMessage') }}
+        </div>
+    @endif
+
+    <!-- Success message -->
+    @if (session('successMessage'))
+        <div class="alert alert-success text-center">
+            {{ session('successMessage') }}
+        </div>
+    @endif
 
 <head>
   <meta charset="UTF-8">
@@ -14,7 +27,7 @@
   <div class="container d-flex justify-content-center mt-5">
     <div class="col-md-6">
       <h2 class="mb-4">Cadastrar Produto</h2>
-      <form method="POST" action="{{ route('produtos.create') }}">
+      <form method="POST" action="{{ route('produtos.store') }}">
         @csrf
 
         <div class="form-group">
@@ -33,6 +46,8 @@
           <select id="categoria" name="categoria" class="form-control" required>
             <option value="bebidas">Bebidas</option>
             <option value="alimentos">Alimentos</option>
+            <option value="pizzaria">Pizzaria</option>
+            <option value="sushi">Sushi</option>
             <option value="limpeza">Produtos de Limpeza</option>
           </select>
         </div>
@@ -64,3 +79,4 @@
 </body>
 
 </html>
+

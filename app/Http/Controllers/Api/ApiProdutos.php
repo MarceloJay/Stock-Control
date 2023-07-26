@@ -53,12 +53,15 @@ class ApiProdutos extends Controller
     }
 
     public function create(Request $request)
-{
-        // $userId = Session::get('user_id');
+    {
+        // var_dump($request->all());
+        $userId = $request->all();
+        // var_dump(Session::get('variableName'));
+        // var_dump(session()->get('userId'));
+        // session()->save();
 
-        $userId = session('key');
-
-        // var_dump($userId);
+        // var_dump(session('userId'));
+        var_dump($userId);
         // die();
         // Valide os dados do formulário
         $validatedData = $request->validate([
@@ -81,13 +84,12 @@ class ApiProdutos extends Controller
             'user_id' => $userId, // Obtenha o ID do usuário autenticado
         ]);
 
-        // Retorne uma resposta ou redirecione para a página desejada
-        return response()->json(['message' => 'Produto gravado com sucesso!', 'produto' => $produto]);
-    // } else {
-    //     var_dump('Usuário não autenticado, faça algo apropriado aqui');
-    //     // Usuário não autenticado, faça algo apropriado aqui
-    // }
-}
+        // return response()->json(['message' => 'Produto gravado com sucesso!', 'produto' => $produto]);
+
+        $url = route('home');
+        return redirect($url);
+        
+    }
 
 
 }

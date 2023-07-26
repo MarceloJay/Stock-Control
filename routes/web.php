@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdutosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +18,18 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
 
+Route::group(['middleware' => 'web'], function () {
 
-Route::group(['namespace' => 'Auth'], function () {
-    // Authentication Routes...
-    // Route::get('welcome_first', 'LoginController@welcome_first')->name('welcome_first');
-    // Route::get('welcome_first', [LoginController::class, 'welcome_first'])->name('welcome_first');
+    Route::view('/', 'welcome')->name('welcome');
+    Route::view('/login', 'login')->name('login');
 
-    // Route::get('/login', [LoginController::class, 'login'])->name('login');
-    // Route::post('login', 'LoginController@login');
-    // Route::get('logout', 'LoginController@logout')->name('logout');
+    Route::resource('/produtos', ProdutosController::class);
+    Route::resource('/dashboard', DashboardController::class);
+    // Route::resource('/user', UserController::class)->except(['index']);
+
+    // Route::get('/clientes', [ClienteController::class, 'index'])->middleware('role:admin')->name('clientes.index');
+    Route::post('/login', [UserController::class, 'login'])->name('user.login');
+    // Route::get('/logout', [ClienteController::class, 'logout'])->name('clientes.logout');
+    // Route::post('/pagamentos/{pagamento}', [PagamentoController::class, 'Executar'])->name('pagamentos.executar');
 });
-
-// Route::get('session', 'SessionController@session')->name('session');
-
-
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth')->name('home');
-
-

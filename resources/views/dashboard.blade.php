@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-@extends('headers.sidebar')
+@extends('layouts.sidebar')
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <title>StockControl</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <html>
   <script src="https://d3js.org/d3.v4.min.js"></script>

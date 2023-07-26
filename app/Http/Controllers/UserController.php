@@ -32,6 +32,20 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    public function login(Request $request)
+    {
+        try {
+            $auth = new AuthController();
+            $auth->login($request);
+
+            return redirect()->route('dashboard.index');
+
+        } catch (\Throwable $th) {
+            session()->flash('errorMessage', $th->getMessage());
+            return redirect()->back();
+        }
+    }
+
 
     /**
      * @param int $id

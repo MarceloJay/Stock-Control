@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -221,6 +222,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark p-0">
         <a class="navbar-brand mr-0">
