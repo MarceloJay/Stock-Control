@@ -53,9 +53,8 @@ class ApiProdutos extends Controller
     }
 
     public function create(Request $request)
-{
-        var_dump($request->all());
-        die();
+    {
+        // var_dump($request->all());
         $userId = $request->all();
         // var_dump(Session::get('variableName'));
         // var_dump(session()->get('userId'));
@@ -89,8 +88,8 @@ class ApiProdutos extends Controller
 
         $url = route('home');
         return redirect($url);
-    
-}
+        
+    }
 
 
 }
