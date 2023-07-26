@@ -91,6 +91,7 @@
 
         .nav {
             list-style: none;
+            margin-top: 40px;
         }
 
         .nav li a {
@@ -117,16 +118,19 @@
 
         .logo {
             width: 180px; 
+            height: 100px;
             border-radius: 10%;
+            margin: 20px 0px 0px 0px;
         }
 
         .nav li:nth-child(1) a::before { content: '\f015'; } 
         .nav li:nth-child(2) a::before { content: '\f07a'; } 
         .nav li:nth-child(3) a::before { content: '\f07c'; } 
-        .nav li:nth-child(4) a::before { content: '\f007'; } 
-        .nav li:nth-child(5) a::before { content: '\f080'; } 
-        .nav li:nth-child(6) a::before { content: '\f013'; } 
-        .nav li:nth-child(7) a::before { content: '\f011'; }
+        .nav li:nth-child(4) a::before { content: '\f07c'; } 
+        .nav li:nth-child(5) a::before { content: '\f007'; } 
+        .nav li:nth-child(6) a::before { content: '\f080'; } 
+        .nav li:nth-child(7) a::before { content: '\f013'; } 
+        .nav li:nth-child(8) a::before { content: '\f011'; }
     </style>
 </head>
 <body>
@@ -140,12 +144,13 @@
                 <line x1="0" y1="50" x2="100" y2="50" />
                 <line x1="0" y1="80" x2="100" y2="80" />
             </svg>
-            </a>
+        </a>
             
         <ul class="nav">
             <li><a href="{{ route('dashboard.index') }}">Página Inicial</a></li>
-            <li><a href="{{ route('produtos.create') }}">Add Pedidos</a></li>
             <li><a href="{{ route('produtos.index') }}">Produtos</a></li>
+            <li><a href="{{ route('produtos.create') }}">Adicionar Pedidos</a></li>
+            <li><a href="#">Retirar Produtos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Relatórios</a></li>
             <li><a href="#">Settings</a></li>
@@ -182,25 +187,6 @@
                 console.error('Erro:', error);
             });
         });
-
-        // const addProduto = document.getElementById('add');
-        // addProduto.addEventListener('click', () => {
-        //     fetch('show', {
-        //         method: 'POST',
-        //         headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken }
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //         // Exiba a mensagem da resposta JSON (opcional)
-        //         console.log(data.message);
-                
-        //         // Redirecione para a página de login
-        //         window.location.href = '/login';
-        //         })
-        //         .catch(error => {
-        //         console.error('Erro:', error);
-        //     });
-        // });
 
     </script>
 </body>
