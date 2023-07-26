@@ -8,34 +8,18 @@ use App\Models\Produto;
 
 class ProdutosController extends Controller
 {
-    // Método para exibir a lista de produtos
-    // public function index()
-    // {
-    //     $produtos = Produto::paginate(10);
-    //     $categorias = Produto::distinct()->pluck('categoria');
-    //     return view('produtos.index', compact('produtos', 'categorias'));
-    // }
     public function index(Request $request)
     {
         $selectedCategoria = $request->query('categoria'); // Obtém a categoria selecionada da query string
 
         $query = Produto::query();
-
-        // Se uma categoria foi selecionada, filtra a query pelo valor da categoria
         if ($selectedCategoria) {
             $query->where('categoria', $selectedCategoria);
         }
 
-        // Conta a quantidade total de produtos (com ou sem filtro de categoria)
         $totalProdutos = $query->count();
-
-        // Define a quantidade de produtos a serem exibidos por página
         $produtosPorPagina = 10;
-
-        // Obtém os produtos da página atual com base na categoria selecionada
         $produtos = $query->paginate($produtosPorPagina);
-
-        // Obtém as categorias disponíveis (para o select)
         $categorias = Produto::distinct()->pluck('categoria');
 
         return view('produtos.index', compact('produtos', 'categorias', 'selectedCategoria', 'totalProdutos'));
@@ -66,18 +50,16 @@ class ProdutosController extends Controller
                 'quantidade_embalagem' => 'required|integer|min:1',
                 'unidades' => 'required|integer|min:1',
             ]);
-            // Verificar se já existe um produto com o mesmo tipo de embalagem e mesma quantidade de embalagem
+            
             $produtoExistente = Produto::where('embalagem', $request->input('embalagem'))
                 ->where('quantidade_embalagem', $request->input('quantidade_embalagem'))
                 ->where('categoria', $request->input('categoria'))
                 ->where('nome', $request->input('nome'))
                 ->first();
             if ($produtoExistente) {
-                // Se o produto já existe, somar a quantidade de unidades
                 $produtoExistente->unidades += $request->input('unidades');
                 $produtoExistente->save();
             } else {
-                // Se o produto não existe, criar um novo produto
                 $produto = new Produto([
                     'nome' => $request->input('nome'),
                     'descricao' => $request->input('descricao'),
